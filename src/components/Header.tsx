@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 import "./Header.css";
 
 const links = [
@@ -71,6 +72,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
+  const { count } = useCart();
 
   const onSearch = (e: FormEvent) => {
     e.preventDefault();
@@ -134,8 +136,13 @@ export default function Header() {
           <Link to="/wishlist" className="icon-btn" aria-label="Wishlist">
             <HeartIcon />
           </Link>
-          <Link to="/cart" className="icon-btn" aria-label="Cart">
+          <Link
+            to="/cart"
+            className="icon-btn"
+            aria-label={count > 0 ? `Cart, ${count} item${count > 1 ? "s" : ""}` : "Cart"}
+          >
             <CartIcon />
+            {count > 0 && <span className="icon-btn__badge">{count > 99 ? "99+" : count}</span>}
           </Link>
         </div>
       </div>
