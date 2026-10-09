@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fredoka:wght@500;600;700&display=swap");
+
+:root {
+  /* Sky blue base */
+  --sky: #cfeafb;
+  --sky-deep: #7cc6ee;
+  --navy: #17324d;
+  /* Multicolor accents */
+  --coral: #ff7a6b;
+  --sun: #ffc93c;
+  --mint: #5ed3a5;
+  --lilac: #b79cff;
+  --white: #ffffff;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--sky);
+  color: var(--navy);
+  font-family: "DM Sans", system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Fredoka", "Trebuchet MS", sans-serif;
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 3px;
+}
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Multicolor stitched divider */
+.stitch {
+  position: relative;
+  height: 12px;
+  background: repeating-linear-gradient(90deg,
+      var(--coral) 0 56px,
+      var(--sun) 56px 112px,
+      var(--mint) 112px 168px,
+      var(--lilac) 168px 224px);
+}
+
+.stitch::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  border-top: 2px dashed rgba(255, 255, 255, 0.9);
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 999px;
+  border: 2px solid var(--navy);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.btn--navy {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.btn--navy:hover {
+  background: var(--coral);
+  border-color: var(--coral);
+  color: var(--navy);
+}
+
+.btn--white {
+  background: var(--white);
+  color: var(--navy);
+}
+
+.btn--white:hover {
+  background: var(--sun);
+}
+
+.btn--sun {
+  background: var(--sun);
+  border-color: var(--sun);
+  color: var(--navy);
+}
+
+.btn--sun:hover {
+  background: var(--white);
+  border-color: var(--white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
