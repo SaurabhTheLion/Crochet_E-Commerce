@@ -1,9 +1,11 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { CartProvider } from "./context/CartContext";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
+import Product from "./pages/Product";
 
 // Temporary page so links don't show a blank screen. Replace with real pages later.
 function ComingSoon({ title }: { title: string }) {
@@ -15,10 +17,20 @@ function ComingSoon({ title }: { title: string }) {
   );
 }
 
+// Jump to the top whenever the page (URL) changes
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
 export default function App() {
   return (
     <CartProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -27,7 +39,7 @@ export default function App() {
           <Route path="/about" element={<ComingSoon title="About" />} />
           <Route path="/contact" element={<ComingSoon title="Contact" />} />
           <Route path="/wishlist" element={<ComingSoon title="Wishlist" />} />
-          <Route path="/product/:id" element={<ComingSoon title="Product" />} />
+          <Route path="/product/:id" element={<Product />} />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -1,0 +1,313 @@
+.pdp {
+    min-height: 60vh;
+    padding: 32px 0 80px;
+}
+
+.pdp-missing {
+    margin: 12px 0 24px;
+}
+
+.pdp-crumbs {
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+}
+
+.pdp-crumbs a {
+    color: var(--navy);
+}
+
+/* ---------- Top: photos + details ---------- */
+.pdp-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+}
+
+.pdp-gallery {
+    display: grid;
+    grid-template-columns: 76px 1fr;
+    gap: 14px;
+}
+
+.pdp-thumbs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.pdp-thumbs button {
+    display: block;
+    width: 76px;
+    height: 76px;
+    padding: 0;
+    overflow: hidden;
+    border: 3px solid transparent;
+    border-radius: 14px;
+    background: var(--white);
+    cursor: pointer;
+}
+
+.pdp-thumbs button.is-active {
+    border-color: var(--navy);
+}
+
+.pdp-thumbs img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pdp-main {
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 24px;
+    background: var(--white);
+}
+
+.pdp-main img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Details */
+.pdp-info h1 {
+    margin-bottom: 12px;
+    font-size: clamp(1.9rem, 4vw, 2.75rem);
+    font-weight: 700;
+}
+
+.pdp-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--navy);
+    text-decoration: none;
+}
+
+.pdp-rating:hover span:last-child {
+    text-decoration: underline;
+}
+
+.pdp-price {
+    margin-top: 16px;
+    font-family: "Fredoka", "Trebuchet MS", sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.1;
+}
+
+.pdp-price span {
+    margin-right: 2px;
+    font-size: 1.4rem;
+    vertical-align: 0.5em;
+}
+
+.pdp-stock {
+    margin: 4px 0 16px;
+    color: #137a55;
+    font-weight: 700;
+}
+
+.pdp-desc {
+    max-width: 56ch;
+    margin-bottom: 20px;
+}
+
+.pdp-sub {
+    margin-bottom: 8px;
+    font-size: 1.25rem;
+}
+
+.pdp-features {
+    margin: 0 0 28px;
+    padding-left: 20px;
+}
+
+.pdp-features li {
+    margin-bottom: 4px;
+}
+
+.pdp-buy {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* ---------- Stars ---------- */
+.stars {
+    --pct: 100%;
+    display: inline-block;
+    font-size: 1.15rem;
+    letter-spacing: 2px;
+    line-height: 1;
+    background: linear-gradient(90deg, #f59e0b var(--pct), #8fb0cc var(--pct));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+/* ---------- Reviews ---------- */
+.pdp-reviews {
+    margin-top: 72px;
+    padding-top: 40px;
+    border-top: 3px dashed var(--sky-deep);
+}
+
+.pdp-reviews h2 {
+    margin-bottom: 24px;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.pdp-reviews__grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.pdp-summary {
+    padding: 24px;
+    border: 3px solid var(--mint);
+    border-radius: 20px;
+    background: var(--white);
+}
+
+.pdp-summary__score {
+    font-size: 1.1rem;
+}
+
+.pdp-summary__score strong {
+    font-family: "Fredoka", "Trebuchet MS", sans-serif;
+    font-size: 2.75rem;
+}
+
+.pdp-summary__count {
+    margin: 4px 0 18px;
+}
+
+.pdp-bars {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.pdp-bars li {
+    display: grid;
+    grid-template-columns: 52px 1fr 40px;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+}
+
+.pdp-bars li span:last-child {
+    text-align: right;
+}
+
+.pdp-bar {
+    height: 14px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: var(--sky);
+}
+
+.pdp-bar div {
+    height: 100%;
+    border-radius: 999px;
+    background: var(--sun);
+}
+
+.pdp-review-list {
+    display: grid;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.review {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 14px;
+    padding: 18px;
+    border-radius: 20px;
+    background: var(--white);
+}
+
+.review__avatar {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--sun);
+    color: var(--navy);
+    font-family: "Fredoka", "Trebuchet MS", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.pdp-review-list li:nth-child(2) .review__avatar {
+    background: var(--mint);
+}
+
+.pdp-review-list li:nth-child(3) .review__avatar {
+    background: var(--lilac);
+}
+
+.pdp-review-list li:nth-child(4) .review__avatar {
+    background: var(--coral);
+}
+
+.review__name {
+    font-weight: 700;
+}
+
+.review__title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 2px 0;
+}
+
+.review__meta {
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 900px) {
+
+    .pdp-top,
+    .pdp-reviews__grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
+@media (max-width: 560px) {
+    .pdp-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .pdp-thumbs {
+        flex-direction: row;
+        order: 2;
+    }
+
+    .pdp-thumbs button {
+        width: 64px;
+        height: 64px;
+    }
+}
