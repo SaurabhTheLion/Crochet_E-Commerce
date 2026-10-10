@@ -1,13 +1,6 @@
 import { Link } from "react-router-dom";
+import { EMAIL, HOURS, PHONE, SOCIALS } from "../config";
 import "./Footer.css";
-
-// Replace these with your real profile links, handles and contact details.
-const socials = [
-  { name: "Instagram", handle: "@cozyloops", href: "https://www.instagram.com/" },
-  { name: "Facebook", handle: "/cozyloops", href: "https://www.facebook.com/" },
-  { name: "YouTube", handle: "@cozyloops", href: "https://www.youtube.com/" },
-  { name: "WhatsApp", handle: "+91 90000 00000", href: "https://wa.me/919000000000" },
-];
 
 export default function Footer() {
   return (
@@ -33,9 +26,9 @@ export default function Footer() {
           <div>
             <h3>Contact us</h3>
             <ul>
-              <li><a href="mailto:hello@cozyloops.in">hello@cozyloops.in</a></li>
-              <li><a href="tel:+919000000000">+91 90000 00000</a></li>
-              <li>Mon to Sat, 10 am to 7 pm</li>
+              <li><a href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
+              <li><a href={`tel:${PHONE.tel}`}>{PHONE.display}</a></li>
+              <li>{HOURS}</li>
               <li>Made with love in India</li>
             </ul>
           </div>
@@ -43,7 +36,7 @@ export default function Footer() {
           <div>
             <h3>Follow us</h3>
             <ul className="site-footer__socials">
-              {socials.map((s) => (
+              {SOCIALS.map((s) => (
                 <li key={s.name}>
                   <a href={s.href} target="_blank" rel="noopener noreferrer">
                     <strong>{s.name}</strong> {s.handle}

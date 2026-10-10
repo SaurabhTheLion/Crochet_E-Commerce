@@ -6,6 +6,9 @@ import { CartProvider } from "./context/CartContext";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Product from "./pages/Product";
+import Category from "./pages/Category";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 // Temporary page so links don't show a blank screen. Replace with real pages later.
 function ComingSoon({ title }: { title: string }) {
@@ -35,9 +38,9 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/shop" element={<ComingSoon title="Category" />} />
-          <Route path="/about" element={<ComingSoon title="About" />} />
-          <Route path="/contact" element={<ComingSoon title="Contact" />} />
+          <Route path="/shop" element={<Category />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/wishlist" element={<ComingSoon title="Wishlist" />} />
           <Route path="/product/:id" element={<Product />} />
         </Routes>

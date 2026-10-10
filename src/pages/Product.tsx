@@ -37,7 +37,8 @@ function ProductView({ product }: { product: ProductType }) {
     <main className="pdp">
       <div className="wrap">
         <nav className="pdp-crumbs" aria-label="Breadcrumb">
-          <Link to="/">Home</Link> › <Link to="/shop">Category</Link> › <span aria-current="page">{product.name}</span>
+          <Link to="/">Home</Link> › <Link to={`/shop?category=${encodeURIComponent(product.category)}`}>{product.category}</Link> ›{" "}
+          <span aria-current="page">{product.name}</span>
         </nav>
 
         <div className="pdp-top">

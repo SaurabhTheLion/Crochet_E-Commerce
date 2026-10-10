@@ -1,0 +1,253 @@
+.cat-page {
+    min-height: 60vh;
+    padding: 48px 0 80px;
+}
+
+.cat-page h1 {
+    margin-bottom: 20px;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 700;
+}
+
+/* ---------- Search bar ---------- */
+.cat-search {
+    position: relative;
+    max-width: 640px;
+    margin-bottom: 32px;
+}
+
+.cat-search__field {
+    position: relative;
+}
+
+.cat-search svg {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    color: var(--navy);
+    pointer-events: none;
+}
+
+.cat-search input {
+    width: 100%;
+    padding: 15px 20px 15px 52px;
+    border: 3px solid var(--navy);
+    border-radius: 999px;
+    background: var(--white);
+    color: var(--navy);
+    font: inherit;
+    font-size: 1.05rem;
+}
+
+.cat-search input:focus {
+    outline: 3px solid var(--sun);
+    outline-offset: 2px;
+}
+
+/* ---------- Layout ---------- */
+.cat-layout>* {
+    min-width: 0;
+    /* stops wide children from stretching the page */
+}
+
+.cat-layout {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    gap: 32px;
+    align-items: start;
+}
+
+/* ---------- Category panel ---------- */
+.cat-nav {
+    position: sticky;
+    top: 96px;
+    padding: 16px 8px 12px 16px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.55);
+}
+
+.cat-nav__title {
+    margin-bottom: 12px;
+    font-size: 1.15rem;
+}
+
+.cat-nav__title span {
+    font-family: "DM Sans", system-ui, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.cat-nav__empty {
+    padding: 8px 8px 12px 0;
+    font-weight: 700;
+}
+
+/* The scrolling part: grows with the list, then scrolls */
+.cat-nav__list {
+    position: relative;
+    /* lets the page measure positions inside the list */
+    display: grid;
+    gap: 10px;
+    max-height: calc(100vh - 260px);
+    min-height: 0;
+    margin: 0;
+    padding: 0 8px 4px 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    list-style: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--navy) transparent;
+}
+
+.cat-nav__list button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    padding: 13px 16px;
+    border: 3px solid transparent;
+    border-radius: 16px;
+    background: var(--white);
+    color: var(--navy);
+    font-family: "Fredoka", "Trebuchet MS", sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.cat-nav__list button:hover {
+    background: color-mix(in srgb, var(--white) 55%, var(--sun));
+}
+
+.cat-nav__count {
+    display: grid;
+    place-items: center;
+    min-width: 28px;
+    height: 28px;
+    padding: 0 8px;
+    border-radius: 999px;
+    background: var(--sky);
+    font-family: "DM Sans", system-ui, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+/* Selected category: a different colour for each */
+.cat-nav__list button.is-active {
+    border-color: var(--navy);
+}
+
+.cat-nav__list li:nth-child(6n + 1) button.is-active {
+    background: var(--coral);
+}
+
+.cat-nav__list li:nth-child(6n + 2) button.is-active {
+    background: var(--sun);
+}
+
+.cat-nav__list li:nth-child(6n + 3) button.is-active {
+    background: var(--mint);
+}
+
+.cat-nav__list li:nth-child(6n + 4) button.is-active {
+    background: var(--lilac);
+}
+
+.cat-nav__list li:nth-child(6n + 5) button.is-active {
+    background: var(--sky-deep);
+}
+
+.cat-nav__list li:nth-child(6n + 6) button.is-active {
+    background: var(--sun);
+}
+
+.cat-nav__list button.is-active .cat-nav__count {
+    background: var(--white);
+}
+
+/* ---------- Results ---------- */
+.cat-results__head {
+    margin-bottom: 24px;
+}
+
+.cat-results__head h2 {
+    margin-bottom: 4px;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.cat-results__count {
+    margin-top: 4px;
+    font-weight: 700;
+}
+
+.cat-results__clear {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--navy);
+    font: inherit;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+}
+
+/* Keep tiles a normal size even when only 1-2 products match */
+.cat-results .tiles {
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+}
+
+.cat-empty {
+    padding: 24px;
+    border-radius: 20px;
+    background: var(--white);
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 800px) {
+    .cat-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+    }
+
+    .cat-nav {
+        position: static;
+        padding: 12px;
+    }
+
+    .cat-nav__title {
+        margin-bottom: 8px;
+        font-size: 1rem;
+    }
+
+    /* Categories become a row you swipe sideways */
+    .cat-nav__list {
+        display: flex;
+        gap: 10px;
+        max-height: none;
+        padding: 0 0 8px;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .cat-nav__list li {
+        flex: 0 0 auto;
+    }
+
+    .cat-nav__list button {
+        width: auto;
+        padding: 10px 16px;
+        font-size: 1rem;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 700px) {
+    .cat-results .tiles {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}

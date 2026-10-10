@@ -1,3 +1,6 @@
+export const categories = ["Home decor", "Flowers", "Clothes", "Hair decor", "Bed items", "Toys"] as const;
+export type Category = (typeof categories)[number];
+
 export type Review = {
   id: number;
   name: string;
@@ -10,6 +13,7 @@ export type Review = {
 export type Product = {
   id: number;
   name: string;
+  category: Category;
   price: number;
   image: string; // main photo, also used on tiles and in the cart
   alt: string;
@@ -58,11 +62,56 @@ const gallery = (main: string, seed: number): string[] => [
   }),
 ];
 
+// Short sample reviews for products that don't have hand-written ones
+const reviewPool: [string, number, string, string][] = [
+  ["Priya S.", 5, "Absolutely love it", "The {item} looks even better in person. The stitching is neat and the colours are lovely."],
+  ["Rohan M.", 4, "Very nice, good value", "Well made and nicely packed. I would happily order the {item} again."],
+  ["Ananya R.", 5, "Perfect gift", "Bought the {item} for a friend and she loved it. Soft, neat and cheerful."],
+  ["Neha K.", 5, "Better than the photos", "The colours of the {item} are bright and happy. Arrived quickly and well wrapped."],
+  ["Vikram T.", 4, "Good quality", "You can tell this is handmade with care. The {item} feels sturdy and soft."],
+  ["Kavya P.", 5, "So pretty", "Got so many compliments on the {item}. Already thinking about my next order."],
+];
+const reviewDates = ["6 October 2026", "24 September 2026", "11 September 2026"];
+
+const sampleReviews = (item: string, seed: number): Review[] =>
+  [0, 1, 2].map((k) => {
+    const [name, rating, title, text] = reviewPool[(seed + k * 2) % reviewPool.length];
+    return { id: k + 1, name, rating, title, date: reviewDates[k], text: text.replace("{item}", item.toLowerCase()) };
+  });
+
+// Builds a product that uses only generated dummy photos
+const dummyProduct = (
+  id: number,
+  name: string,
+  category: Category,
+  price: number,
+  seed: number,
+  rating: number,
+  ratingCount: number,
+  breakdown: number[],
+  description: string,
+  features: string[],
+): Product => {
+  const photos = [1, 2, 3, 4].map((n, k) => {
+    const [bg, ball] = palette[(seed + k) % palette.length];
+    return dummyPhoto(`Dummy photo ${n}`, bg, ball);
+  });
+  return {
+    id, name, category, price,
+    image: photos[0],
+    alt: `${name} (dummy photo)`,
+    images: photos,
+    rating, ratingCount, breakdown, description, features,
+    reviews: sampleReviews(name, seed),
+  };
+};
+
 // All product details and reviews below are sample data.
 export const products: Product[] = [
   {
     id: 1,
     name: "Granny square throw",
+    category: "Home decor",
     price: 1299,
     image: unsplash("1782576417426-4ae01da20440", 600),
     alt: "Colourful granny square crochet",
@@ -87,6 +136,7 @@ export const products: Product[] = [
   {
     id: 2,
     name: "Penguin plush set",
+    category: "Toys",
     price: 799,
     image: unsplash("1779433755935-991480f06b98", 600),
     alt: "Crocheted penguin toys",
@@ -111,6 +161,7 @@ export const products: Product[] = [
   {
     id: 3,
     name: "Cloud blanket",
+    category: "Bed items",
     price: 1899,
     image: unsplash("1693387369575-df25ef8424e7", 600),
     alt: "Crocheted blanket on a bed",
@@ -135,6 +186,7 @@ export const products: Product[] = [
   {
     id: 4,
     name: "Cozy sofa throw",
+    category: "Home decor",
     price: 1599,
     image: unsplash("1693387347071-d3bf494cbe0e", 600),
     alt: "Person holding a crocheted throw",
@@ -159,6 +211,7 @@ export const products: Product[] = [
   {
     id: 5,
     name: "Pastel baby blanket",
+    category: "Bed items",
     price: 999,
     image: unsplash("1693387359607-f48d0a824b1e", 600),
     alt: "Soft crocheted blanket",
@@ -180,4 +233,31 @@ export const products: Product[] = [
       { id: 3, name: "Shruti C.", rating: 5, title: "Beautiful and so soft", date: "2 September 2026", text: "Washes well and still feels like new. I have ordered a second one for my friend." },
     ],
   },
+  dummyProduct(6, "Crochet sunflower bouquet", "Flowers", 599, 0, 4.7, 94, [72, 20, 5, 2, 1],
+    "A bunch of cheerful crochet sunflowers that never wilt. Lovely on a desk, a shelf or as a gift.",
+    ["Set of 5 stems, about 35 cm tall", "Wire stems hold their shape", "No water or sunlight needed", "Made to order, so petals can vary slightly"]),
+  dummyProduct(7, "Tulip stem set", "Flowers", 449, 1, 4.6, 58, [66, 24, 7, 2, 1],
+    "Soft crochet tulips in spring colours. Arrange them in a vase and enjoy flowers all year round.",
+    ["Set of 6 tulips in mixed colours", "About 30 cm tall with flexible stems", "Soft cotton yarn", "Great as a gift or table decoration"]),
+  dummyProduct(8, "Crochet crop top", "Clothes", 1199, 2, 4.4, 41, [52, 28, 12, 5, 3],
+    "A light, breathable crochet top for sunny days. Pair it with high-waist jeans or a long skirt.",
+    ["Soft cotton yarn, comfortable on skin", "Available in S, M and L", "Hand wash and dry flat", "Made to order in your chosen colour"]),
+  dummyProduct(9, "Granny square cardigan", "Clothes", 2499, 3, 4.8, 77, [78, 16, 4, 1, 1],
+    "A colourful cardigan made from patchwork granny squares. Cosy on chilly evenings and a talking point everywhere.",
+    ["Hand-crocheted granny square patchwork", "Relaxed fit, sizes S to XL", "Gentle hand wash recommended", "Each piece is one of a kind"]),
+  dummyProduct(10, "Scrunchie set of 3", "Hair decor", 299, 0, 4.7, 210, [76, 18, 4, 1, 1],
+    "Three soft crochet scrunchies in matching colours. Gentle on hair and pretty on the wrist too.",
+    ["Set of 3 in assorted colours", "Soft stretchy elastic inside", "Gentle on all hair types", "Machine washable in a laundry bag"]),
+  dummyProduct(11, "Flower hair clips", "Hair decor", 249, 1, 4.5, 133, [64, 24, 8, 3, 1],
+    "Tiny crochet flowers on sturdy clips. Wear one, wear a few, or gift the whole set.",
+    ["Set of 4 clips with crochet flowers", "Strong metal clip that stays put", "About 4 cm wide each", "Perfect for kids and adults"]),
+  dummyProduct(12, "Coaster set of 4", "Home decor", 349, 2, 4.6, 119, [70, 21, 6, 2, 1],
+    "Round crochet coasters that protect your table and add a pop of colour to every cup of chai.",
+    ["Set of 4 in mixed colours", "About 11 cm across", "Thick cotton soaks up drips", "Easy to wash and reuse"]),
+  dummyProduct(13, "Cushion cover", "Bed items", 649, 3, 4.7, 88, [74, 18, 5, 2, 1],
+    "A textured crochet cover that turns a plain cushion into a cosy statement piece.",
+    ["Fits a 40 x 40 cm cushion", "Hidden button closure", "Soft cotton yarn", "Cushion insert not included"]),
+  dummyProduct(14, "Amigurumi bunny", "Toys", 549, 0, 4.9, 167, [84, 12, 3, 1, 0],
+    "A floppy-eared crochet bunny who loves cuddles. Soft, safe and made to be carried everywhere.",
+    ["About 25 cm tall", "Stitched eyes, safe for little ones", "Stuffed with soft washable filling", "Spot clean or gentle hand wash"]),
 ];
