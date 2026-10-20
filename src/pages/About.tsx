@@ -28,7 +28,7 @@ const offers = [
 
 export default function About() {
   useEffect(() => {
-    document.title = "About us | CozyLoops";
+    document.title = "About us | Yarnnora";
   }, []);
 
   return (
@@ -36,9 +36,9 @@ export default function About() {
       {/* Story */}
       <section className="about-hero">
         <div className="wrap">
-          <h1>Hello, we are CozyLoops</h1>
+          <h1>Hello, we are Yarnnora</h1>
           <p className="about-lead">
-            Every CozyLoops piece begins with a ball of yarn, a crochet hook and a little patience. We
+            Every Yarnnora piece begins with a ball of yarn, a crochet hook and a little patience. We
             turn soft, colourful thread into things you can hold, gift and keep: flowers that bloom all
             year, decor that makes a house feel like home, and small beauty treats that make every day a
             little prettier. Everything is made by hand, one loop at a time, because we believe good

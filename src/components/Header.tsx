@@ -10,7 +10,7 @@ const links = [
   { label: "Contact", to: "/contact", end: false },
 ];
 
-// CozyLoops logo: a ball of yarn with a looping thread
+// Yarnnora logo: a ball of yarn with a looping thread
 function Logo() {
   return (
     <svg viewBox="0 0 52 52" width="44" height="44" aria-hidden="true">
@@ -100,7 +100,7 @@ export default function Header() {
 
         <Link to="/" className="brand">
           <Logo />
-          <span className="brand__name">CozyLoops</span>
+          <span className="brand__name">Yarnnora</span>
         </Link>
 
         <div id="header-panel" className={`site-header__panel ${open ? "is-open" : ""}`}>

@@ -47,7 +47,7 @@ export default function Category() {
   };
 
   useEffect(() => {
-    document.title = `${searching ? "Search" : selected} | CozyLoops`;
+    document.title = `${searching ? "Search" : selected} | Yarnnora`;
   }, [searching, selected]);
 
   // Keep the selected category visible inside the scrolling list (useful with many categories)

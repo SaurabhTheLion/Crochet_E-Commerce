@@ -26,7 +26,7 @@ export default function Contact() {
   const [sent, setSent] = useState<Channel | null>(null);
 
   useEffect(() => {
-    document.title = "Contact us | CozyLoops";
+    document.title = "Contact us | Yarnnora";
   }, []);
 
   const send = (channel: Channel) => {

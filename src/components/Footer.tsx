@@ -47,7 +47,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <p className="site-footer__copy">© 2026 CozyLoops. Handmade with care.</p>
+      <p className="site-footer__copy">© 2026 Yarnnora. Handmade with care.</p>
     </footer>
   );
 }

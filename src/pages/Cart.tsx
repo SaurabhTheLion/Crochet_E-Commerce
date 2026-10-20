@@ -37,7 +37,7 @@ export default function Cart() {
 
     const lines = items.map((i, n) => `${n + 1}. ${i.name} x ${i.qty} = ₹${i.price * i.qty}`);
     const message = [
-      "*New order from CozyLoops website*",
+      "*New order from Yarnnora website*",
       "",
       "*Items*",
       ...lines,

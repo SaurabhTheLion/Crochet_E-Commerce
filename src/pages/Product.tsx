@@ -23,7 +23,7 @@ function ProductView({ product }: { product: ProductType }) {
   const inCart = items.find((i) => i.id === product.id)?.qty ?? 0;
 
   useEffect(() => {
-    document.title = `${product.name} | CozyLoops`;
+    document.title = `${product.name} | Yarnnora`;
   }, [product.name]);
 
   const handleAdd = () => {

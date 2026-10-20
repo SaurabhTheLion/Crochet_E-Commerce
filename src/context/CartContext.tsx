@@ -15,7 +15,7 @@ type CartValue = {
   clear: () => void;
 };
 
-const STORAGE_KEY = "cozyloops-cart";
+const STORAGE_KEY = "Yarnnora-cart";
 const MAX_QTY = 99;
 
 const CartContext = createContext<CartValue | null>(null);
