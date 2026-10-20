@@ -110,7 +110,7 @@ const dummyProduct = (
 export const products: Product[] = [
   {
     id: 1,
-    name: "Sunflower wall hanging",
+    name: "Sunflower",
     category: "Home decor",
     price: 1199,
     image: unsplash("1782576417426-4ae01da20440", 600),
