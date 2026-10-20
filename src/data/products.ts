@@ -135,7 +135,7 @@ export const products: Product[] = [
   },
   {
     id: 2,
-    name: "Ever Bloom Crochet Tulip",
+    name: "Tulip",
     category: "Flowers",
     price: 199,
     image: unsplash("1782576417426-4ae01da20440", 600),
